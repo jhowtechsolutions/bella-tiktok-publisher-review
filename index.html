@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BELLA TikTok Publisher — gerenciamento oficial de conteúdo TikTok para BellaTrend">
+  <title>BELLA TikTok Publisher | BellaTrend</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <p class="badge">BellaTrend · Official TikTok Integration</p>
+      <h1>BELLA TikTok Publisher</h1>
+      <p class="lead">Ferramenta interna de publicação e gestão de conteúdo via TikTok Content Posting API — com aprovação humana, calendário editorial e conformidade total com OAuth oficial.</p>
+      <nav>
+        <a href="./privacy.html">Privacidade</a>
+        <a href="./terms.html">Termos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Gerenciamento de conteúdo</h2>
+      <p>O BELLA TikTok Publisher integra o pipeline editorial BellaTrend com a conta TikTok autorizada. Cada vídeo passa por validação de qualidade, identidade geográfica (Jundiaí-SP) e pacote de publicação antes de qualquer envio.</p>
+    </section>
+
+    <section>
+      <h2>Upload oficial</h2>
+      <p>Utilizamos exclusivamente a <strong>TikTok Content Posting API</strong> para upload de vídeo (Direct Post ou Draft/Inbox). Não há automação de browser, simulação de login ou endpoints não documentados.</p>
+      <ul>
+        <li>Direct Post — publicação quando auditado e elegível</li>
+        <li>Draft Upload — fallback para seleção manual de áudio/privacidade no app TikTok</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Calendário editorial</h2>
+      <p>Publicações seguem calendário editorial: horários planejados, timezone America/Sao_Paulo e estados PLANNED → READY → PUBLISHING → PUBLISHED.</p>
+    </section>
+
+    <section>
+      <h2>Aprovação manual</h2>
+      <p>Modos operacionais:</p>
+      <div class="modes">
+        <article><h3>MANUAL</h3><p>Operador informa caption, hashtags, privacidade e aprova cada publicação.</p></article>
+        <article><h3>SEMIAUTOMATIC</h3><p>Agente monta preview a partir dos artefatos; humano autoriza antes do envio.</p></article>
+        <article><h3>AUTOMATIC</h3><p>Somente com audit TikTok, gates completos e configuração explícita.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Integração oficial TikTok</h2>
+      <p>Autenticação via <strong>Login Kit</strong> e <strong>OAuth 2.0</strong>. Scopes solicitados conforme função: <code>video.publish</code>, <code>video.upload</code>, <code>user.info.basic</code>. Credenciais OAuth armazenadas apenas no ambiente operacional autorizado; nunca neste site público.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 BellaTrend · <a href="./privacy.html">Política de Privacidade</a> · <a href="./terms.html">Termos de Uso</a></p>
+      <p class="muted">Contato: privacidade@bellatrend.com.br</p>
+    </div>
+  </footer>
+</body>
+</html>

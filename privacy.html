@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade | BellaTrend</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <p class="badge">BellaTrend</p>
+      <h1>Política de Privacidade</h1>
+      <p class="lead">BELLA TikTok Publisher e serviços relacionados.</p>
+      <nav>
+        <a href="./index.html">Início</a>
+        <a href="./terms.html">Termos de Uso</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container legal">
+    <p class="updated">Última atualização: 11 de agosto de 2026</p>
+
+    <p>A BellaTrend ("nós", "nosso") opera o aplicativo <strong>BELLA TikTok Publisher</strong>, ferramenta interna de gestão e publicação de conteúdo na plataforma TikTok. Esta política descreve como tratamos dados pessoais em conformidade com a LGPD (Lei nº 13.709/2018).</p>
+
+    <h2>1. Controlador e contato</h2>
+    <p><strong>Controlador:</strong> BellaTrend<br>
+    <strong>E-mail de privacidade:</strong> privacidade@bellatrend.com.br<br>
+    <strong>Encarregado (DPO):</strong> privacidade@bellatrend.com.br</p>
+
+    <h2>2. Dados que coletamos</h2>
+    <ul>
+      <li><strong>Dados de autenticação TikTok (OAuth):</strong> identificador de usuário TikTok, nome de exibição, foto de perfil básica (scope <code>user.info.basic</code>).</li>
+      <li><strong>Credenciais OAuth:</strong> tokens emitidos pelo TikTok após autorização explícita do titular (armazenados somente no ambiente operacional, nunca neste site).</li>
+      <li><strong>Dados de publicação:</strong> metadados de vídeos enviados (caption, hashtags, status de publicação) — não armazenamos senha da conta TikTok.</li>
+      <li><strong>Logs técnicos:</strong> eventos de auditoria (modo de operação, gates, erros) — sem credenciais.</li>
+      <li><strong>Dados de contato:</strong> e-mail fornecido voluntariamente para suporte ou solicitações LGPD.</li>
+    </ul>
+    <p><strong>Não coletamos:</strong> senha TikTok, credenciais capturadas manualmente, dados de localização GPS do dispositivo, nem dados de terceiros não relacionados ao serviço.</p>
+
+    <h2>3. OAuth TikTok e Login Kit</h2>
+    <p>A autenticação utiliza exclusivamente o fluxo oficial TikTok Login Kit / OAuth 2.0. O usuário é redirecionado para a página de autorização TikTok, concede permissões (scopes) de forma granular e retorna via redirect URI registrada. Não simulamos login nem utilizamos automação de browser.</p>
+
+    <h2>4. Tokens OAuth</h2>
+    <ul>
+      <li>Tokens de acesso usados para chamar a Content Posting API (creator info, init upload, status).</li>
+      <li>Tokens de renovação usados somente para renovar credenciais expiradas, via endpoint oficial TikTok.</li>
+      <li>Credenciais <strong>nunca</strong> são incluídas em repositório git público, relatórios públicos ou logs identificáveis.</li>
+    </ul>
+
+    <h2>5. Armazenamento e segurança</h2>
+    <ul>
+      <li>Tokens armazenados localmente no ambiente operacional BellaTrend, preferencialmente criptografados.</li>
+      <li>Segredos de aplicativo mantidos apenas em configuração privada do operador, nunca no código-fonte público.</li>
+      <li>Acesso restrito a operadores autorizados BellaTrend.</li>
+    </ul>
+
+    <h2>6. Finalidade e base legal</h2>
+    <ul>
+      <li>Publicação e upload de conteúdo autorizado pelo titular (execução de contrato / consentimento).</li>
+      <li>Gestão editorial e calendário de publicações (legítimo interesse, com gates de aprovação humana).</li>
+      <li>Conformidade com políticas TikTok for Developers (obrigação legal / contratual).</li>
+    </ul>
+
+    <h2>7. Compartilhamento</h2>
+    <p>Compartilhamos dados apenas com <strong>TikTok</strong> (via APIs oficiais autorizadas) e infraestrutura necessária à operação. Não vendemos dados pessoais.</p>
+
+    <h2>8. Retenção</h2>
+    <p>Tokens: mantidos enquanto a integração estiver ativa ou até revogação. Logs de auditoria: até 12 meses. Metadados de publicação: conforme necessidade editorial.</p>
+
+    <h2>9. Revogação de acesso</h2>
+    <p>O titular pode revogar autorização a qualquer momento:</p>
+    <ul>
+      <li>No app TikTok: Configurações → Segurança → Apps conectados → remover BellaTrend.</li>
+      <li>Solicitando desconexão ao operador BellaTrend via privacidade@bellatrend.com.br.</li>
+    </ul>
+    <p>Após revogação, tokens locais são invalidados e removidos.</p>
+
+    <h2>10. Exclusão de dados</h2>
+    <p>Para solicitar exclusão de dados pessoais, envie e-mail para <strong>privacidade@bellatrend.com.br</strong> com assunto "LGPD — Exclusão de dados". Responderemos em até 15 dias úteis.</p>
+
+    <h2>11. Direitos do titular (LGPD)</h2>
+    <p>Confirmação, acesso, correção, anonimização, portabilidade, eliminação, informação sobre compartilhamento e revogação de consentimento — via privacidade@bellatrend.com.br.</p>
+
+    <h2>12. Crianças e adolescentes</h2>
+    <p>O serviço não se destina a menores de 18 anos. Não coletamos intencionalmente dados de menores.</p>
+
+    <h2>13. Alterações</h2>
+    <p>Esta política pode ser atualizada. A data de revisão será indicada no topo.</p>
+
+    <h2>14. Contato</h2>
+    <p><strong>BellaTrend — Privacidade</strong><br>
+    E-mail: privacidade@bellatrend.com.br</p>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 BellaTrend · <a href="./index.html">Início</a></p>
+    </div>
+  </footer>
+</body>
+</html>
