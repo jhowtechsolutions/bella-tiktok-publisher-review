@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OAuth Callback | BELLA TikTok Publisher</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .callback-wrap { padding: 3rem 0 4rem; max-width: 720px; }
+    .status-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .status-card.success { border-color: #22c55e; }
+    .status-card.error { border-color: #ef4444; }
+    .status-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .status-title.ok { color: #22c55e; }
+    .status-title.fail { color: #ef4444; }
+    .field { margin: 1rem 0; }
+    .field label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .field .value {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-family: Consolas, monospace;
+      font-size: 0.9rem;
+      word-break: break-all;
+      color: var(--text);
+    }
+    .field .value.empty { color: var(--muted); font-style: italic; }
+    .actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn.secondary { background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .hint { color: var(--muted); font-size: 0.9rem; margin-top: 1rem; line-height: 1.5; }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #14532d;
+      color: #86efac;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <p class="badge">BellaTrend · Login Kit OAuth</p>
+      <h1>OAuth Callback</h1>
+      <p class="lead">TikTok redirects here after authorization. Copy the code to complete token exchange locally.</p>
+      <nav>
+        <a href="./index.html">Home</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container callback-wrap">
+    <div id="status-card" class="status-card">
+      <div id="status-title" class="status-title">Processing…</div>
+      <p id="status-message" class="hint"></p>
+    </div>
+
+    <div class="field">
+      <label>Authorization Code</label>
+      <div id="code-value" class="value empty">—</div>
+    </div>
+    <div class="field">
+      <label>State</label>
+      <div id="state-value" class="value empty">—</div>
+    </div>
+    <div class="field">
+      <label>Error</label>
+      <div id="error-value" class="value empty">—</div>
+    </div>
+    <div class="field">
+      <label>Error Description</label>
+      <div id="error-desc-value" class="value empty">—</div>
+    </div>
+
+    <div class="actions">
+      <button id="copy-btn" class="btn" type="button" disabled>Copy Authorization Code</button>
+      <a href="./index.html" class="btn secondary">Return</a>
+    </div>
+
+    <p class="hint">
+      Next step: exchange the authorization code for tokens using BELLA TikTok Publisher locally.
+      Never share your Client Secret. Tokens are stored only in your private runtime environment.
+    </p>
+  </main>
+
+  <div id="toast" class="toast">Authorization code copied</div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 BellaTrend · Official TikTok Login Kit callback · No secrets stored on this page</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var code = params.get("code");
+      var state = params.get("state");
+      var error = params.get("error");
+      var errorDescription = params.get("error_description");
+
+      var statusCard = document.getElementById("status-card");
+      var statusTitle = document.getElementById("status-title");
+      var statusMessage = document.getElementById("status-message");
+      var codeEl = document.getElementById("code-value");
+      var stateEl = document.getElementById("state-value");
+      var errorEl = document.getElementById("error-value");
+      var errorDescEl = document.getElementById("error-desc-value");
+      var copyBtn = document.getElementById("copy-btn");
+      var toast = document.getElementById("toast");
+
+      function setField(el, value) {
+        if (value) {
+          el.textContent = value;
+          el.classList.remove("empty");
+        } else {
+          el.textContent = "—";
+          el.classList.add("empty");
+        }
+      }
+
+      setField(codeEl, code);
+      setField(stateEl, state);
+      setField(errorEl, error);
+      setField(errorDescEl, errorDescription);
+
+      if (error) {
+        statusCard.classList.add("error");
+        statusTitle.textContent = "OAuth Error";
+        statusTitle.classList.add("fail");
+        statusMessage.textContent = errorDescription || "TikTok returned an error during authorization.";
+      } else if (code) {
+        statusCard.classList.add("success");
+        statusTitle.textContent = "OAuth Success";
+        statusTitle.classList.add("ok");
+        statusMessage.textContent = "Authorization code received. Copy it and complete token exchange locally.";
+        copyBtn.disabled = false;
+      } else {
+        statusCard.classList.add("error");
+        statusTitle.textContent = "No Authorization Data";
+        statusTitle.classList.add("fail");
+        statusMessage.textContent = "No code, state, or error parameters found in the URL.";
+      }
+
+      copyBtn.addEventListener("click", function () {
+        if (!code) return;
+        navigator.clipboard.writeText(code).then(function () {
+          toast.classList.add("show");
+          setTimeout(function () { toast.classList.remove("show"); }, 2000);
+        }).catch(function () {
+          var ta = document.createElement("textarea");
+          ta.value = code;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          toast.classList.add("show");
+          setTimeout(function () { toast.classList.remove("show"); }, 2000);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
